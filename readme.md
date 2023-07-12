@@ -1,3 +1,4 @@
+![Logo](img/2.jpg)
 # Universal Higher Secondary School Website
 
 This repository contains the code for the Universal Secondary School Website backend, which has been forked from [PrasannaTandukar/school-website](https://github.com/PrasannaTandukar/school-website.git).

@@ -7,7 +7,7 @@ This repository contains the code for the Universal Secondary School Website
 Clone the website and open index.html to run the project
 
 ```
-git clone https://github.com/PrasannaTandukar/school-website.git
+https://github.com/suyogkad/UHSS-Backend.git
 ```
 
 ### Description

@@ -51,6 +51,10 @@ class DatabaseHelper {
         return $result;
     }
 
+    public function getById($table, $id) {
+        $condition = ['id' => $id];
+        return $this->getData($table, $condition);
+    }
     public function getAll($table) {
         $query = "SELECT * FROM $table";
         $stmt = $this->pdo->prepare($query);

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jul 13, 2023 at 03:21 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Jul 13, 2023 at 07:11 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,7 +58,19 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`id`, `title`, `content`) VALUES
-(4, 'New News', 'fjksakfklsajg');
+(6, 'aaa', 'aaaaaaaaaaaaaaaaaaaaaa'),
+(7, 'bbb', 'bbb'),
+(8, 'ccc', 'ccc'),
+(9, 'ddd', 'ddd'),
+(10, 'eee', 'eeee'),
+(11, 'fff', 'fff'),
+(12, 'aaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'),
+(13, 'aaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'),
+(14, 'Hi shreesh bro', 'kjsadkj sa ghjgea ufs'),
+(15, 'yoo', ' hjgs jcgsaj'),
+(16, 'sanmadssvJ', 'JGHJGF'),
+(17, 'fhfdgdgf', 'gcdhgfdhf '),
+(18, 'teest etst', 'trest test');
 
 -- --------------------------------------------------------
 
@@ -78,8 +90,8 @@ CREATE TABLE `notice` (
 --
 
 INSERT INTO `notice` (`id`, `title`, `content`, `publishDate`) VALUES
-(6, 'Notice 1 ', 'This was the best notice till date', '2023-07-12'),
-(7, 'Notice 2 ', 'This was not the best notice till date', '2023-07-12');
+(8, 'THIS IS A TEST BY ADMIN SUYOG', 'Functionality check!', '2023-07-13'),
+(9, 'this is a test notice', 'this is a test notice', '0000-00-00');
 
 --
 -- Indexes for dumped tables
@@ -117,13 +129,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

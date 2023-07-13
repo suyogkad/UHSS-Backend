@@ -21,9 +21,9 @@ The default page is **index.html**, which is in the root directory. The **common
 
 ## Contributors
 
-- Roshan Gautam: [GitHub](https://github.com/RoshanGautam7)
-- Suyog Kadariya: [GitHub](https://github.com/suyogkad)
-- Prajwol Shrestha: [GitHub](https://github.com/prajwolstha)
+- [Roshan Gautam](https://github.com/RoshanGautam7)
+- [Suyog Kadariya](https://github.com/suyogkad)
+- [Prajwol Shrestha](https://github.com/prajwolstha)
   
 Special thanks to [PrasannaTandukar](https://github.com/PrasannaTandukar) for his contributions to the frontend part of the project.
 

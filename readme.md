@@ -25,5 +25,5 @@ The default page is **index.html**, which is in the root directory. The **common
 - [Suyog Kadariya](https://github.com/suyogkad)
 - [Prajwol Shrestha](https://github.com/prajwolstha)
   
-Special thanks to [PrasannaTandukar](https://github.com/PrasannaTandukar) for his contributions to the frontend part of the project.
+Thanks to [PrasannaTandukar](https://github.com/PrasannaTandukar) for his contributions to the frontend part of the project.
 

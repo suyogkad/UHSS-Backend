@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 session_start();
 
 if (!isset($_SESSION['username']) || !isset($_SESSION['isLoggedIn']) || !$_SESSION['isLoggedIn']) {
@@ -16,11 +19,17 @@ if (isset($_POST['submit'])) {
     
     $title = $_POST['title'];
     $content = $_POST['content'];
+    $buttonTitle = $_POST['button-title'];
+    $link = $_POST['link'];
+    $date = date('Y/m/d');
   
     $table = 'notice';
     $data = [
         'title'=>$title,
         'content'=>$content,
+        'button'=>$buttonTitle,
+        'link' =>$link,
+        'publishDate'=>$date
         
        ];
 
@@ -120,6 +129,9 @@ if (isset($_POST['submit'])) {
       .submit-btn{
         width: 40%;
       }
+      .hidden {
+      display: none;
+    }
 
     
     </style>
@@ -158,6 +170,15 @@ if (isset($_POST['submit'])) {
       <form method="POST" action="" id="addNoticeForm">
         <input type="text" id="title" name="title" placeholder="Notice Title" required>
         <textarea id="content" name="content" placeholder="Notice Content" required></textarea>
+        <div class="pb-3">Add Buttons?:
+          <button class="btn btn-success" id="yesBtn">Yes</button>
+          <button class="btn btn-danger" id="noBtn">No</button>
+
+  </div>
+          <div id="afterClick" class="hidden">
+          <input type="text" name="button-title" placeholder="Button Title">
+            <input type="text" name="link" placeholder="Add your Link">
+          </div>
         <input class ="submit-btn" type="submit" name="submit" value="Submit">
       </form>
     </div>
@@ -167,5 +188,21 @@ if (isset($_POST['submit'])) {
 
   <!-- Include Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/e30eb907c6.js" crossorigin="anonymous"></script>
+  <script>
+    let yesBtn =document.getElementById("yesBtn");
+    let noBtn =document.getElementById("noBtn");
+    let afterClick = document.getElementById("afterClick");
+
+    yesBtn.addEventListener('click',function (){
+      event.preventDefault(); 
+      afterClick.classList.remove('hidden');
+      
+    })
+
+    noBtn.addEventListener('click',function(){
+      event.preventDefault(); 
+      afterClick.classList.add('hidden');
+    })
+  </script>
   </body>
 </html>

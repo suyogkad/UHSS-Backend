@@ -1,3 +1,15 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+include '../classes/databaseconnection.php';
+include '../classes/databasehelper.php';
+
+$database = new DatabaseConnection();
+$helper = new DatabaseHelper($database);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -165,6 +177,24 @@
           >View
         </a>
       </div>
+      <?php
+        
+        $table = 'notice';
+        $notices = $helper->getAll($table);
+
+        foreach ($notices as $notice):
+        ?>
+      <div class="notice-item">
+     
+          <p>Published Date: <?php echo $notice['publishDate']; ?></p>
+          <h4> <?php echo $notice['content']; ?> </h4>
+          <?php if (!empty($notice['link'])) : ?>
+            <a href="<?php echo $notice['link']; ?>" target="_blank"><?php echo $notice['button']; ?></a>
+        <?php endif; ?>
+
+       
+      </div>
+      <?php endforeach; ?>
     </div>
 
     <footer>

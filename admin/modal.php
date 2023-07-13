@@ -1,50 +1,41 @@
 <?php
-session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-if (!isset($_SESSION['username']) || !isset($_SESSION['isLoggedIn']) || !$_SESSION['isLoggedIn']) {
-    // User is not logged in, redirect to the admin.php page
-    header("Location: admin.php");
-    exit();
-}
 include '../classes/databaseconnection.php';
 include '../classes/databasehelper.php';
 
 $database = new DatabaseConnection();
 $helper = new DatabaseHelper($database);
-// Fetch the existing notice data from the database
-$noticeId = $_GET['id'];
-$table = 'notice';
-$condition = ['id' => $noticeId];
-$existingNotice = $helper->getData($table, $condition);
 
-// Check if the form is submitted
 if (isset($_POST['submit'])) {
-    // Retrieve the updated notice data from the form submission
-    $title = $_POST['title'];
-    $content = $_POST['content'];
-    $table = 'notice';
 
+    if(isset($_FILES['image'])){
+        $file_name = $_FILES['image']['name'];
+        $file_tmp = $_FILES['image']['tmp_name'];
+        $path = ("../img/modal/".$file_name);
+        move_uploaded_file($file_tmp, $path);
+        echo "File uploaded successfully.";
+    }
+
+    $table = 'modal';
     $data = [
-        'title'=>$title,
-        'content'=>$content
+        'photo'=>$path
     ];
-    $field = 'id';
-    $value = $noticeId;
-
-    $helper->updateData($table,$data,$field,$value);
-
-    // Redirect to the appropriate page after the update is successful
-    header("Location: notices.php");
-    exit();
+    $helper->insertData($table,$data);
+    
 }
+
 ?>
+
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Edit Notice</title>
+    <title>Add News</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
@@ -63,9 +54,11 @@ if (isset($_POST['submit'])) {
         color: #000000;
         transition: background-color 0.3s ease, color 0.3s ease;
         padding: 15px;
+        /* border-radius: 5px; */
       }
 
       .navbar-nav .nav-link:hover {
+        /* background-color: rgba(240, 110, 34, 0.2);*/ /*background hover color */
         color: #044FA2;
       }
 
@@ -122,6 +115,9 @@ if (isset($_POST['submit'])) {
       .submit-btn{
         width: 40%;
       }
+
+      
+
     </style>
   </head>
   <body>
@@ -157,12 +153,33 @@ if (isset($_POST['submit'])) {
   
   <div class="container mt-4">
     <div class="news-edit-container">
-      <h2>Edit Notice : <?php echo $existingNotice['title']; ?></h2>
-      <form method="POST" action="" id="editNewsForm">
-        <input type="text" id="title" name="title" placeholder="Notice Title" value="<?php echo $existingNotice['title']; ?>">
-        <textarea id="content" name="content" placeholder="Notice Content"><?php echo $existingNotice['content']; ?></textarea>
-        <input class ="submit-btn" type="submit" name="submit" value="Submit">
-      </form>
+
+<form action="" method="post" enctype="multipart/form-data">
+  Select image to upload:
+  <input type="file" name="image" id="image">
+  <input type="submit" value="Upload Image" name="submit">
+</form>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="image-container">
+        <?php
+        
+        $images = $helper->getAll('modal');
+        
+        foreach ($images as $image):
+
+        ?>
+        <ul class="list-unstyled">
+            <li>
+                <img src=" <?php echo $image['photo'] ?>   " height="500" width="500">
+                <a href="delete_modal.php?id=<?php echo $image['id']; ?>">Delete</a>
+            </li>
+        </ul>
+
+        <?php endforeach; ?>
+
     </div>
   </div>
   
@@ -170,13 +187,6 @@ if (isset($_POST['submit'])) {
 
   <!-- Include Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/e30eb907c6.js" crossorigin="anonymous"></script>
-  <script>
-    document.getElementById('editNoticeFrom').addEventListener('submit', function(event) {
-      var confirmation = confirm("Do you want to confirm the changes?");
-      if (!confirmation) {
-        event.preventDefault();
-      }
-    });
-  </script>
   </body>
 </html>
+

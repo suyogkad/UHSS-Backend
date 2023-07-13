@@ -131,24 +131,27 @@ $helper = new DatabaseHelper($database);
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="news.php">News</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="notices.php">Notice</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="logout.php">
-                <img src="../icons/arrow-right-from-bracket-solid.svg" style="width: 20px;">
-                <span class="blue">Logout</span>
-              </a>
-            </li>
-          </ul>
-        </div>
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="news.php">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="notices.php">Notice</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="modal.php">Image</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="logout.php">
+              <img src="../icons/arrow-right-from-bracket-solid.svg" style="width: 20px;">
+              <span class="blue">Logout</span>
+            </a>
+          </li>
+        </ul>
       </div>
+    </div>
     </nav>
     
     <div class="container mt-4">

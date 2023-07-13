@@ -1,5 +1,4 @@
 <?php
-require_once '../classes/databaseconnection.php';
 
 class DatabaseHelper {
     private $pdo;

@@ -1,3 +1,14 @@
+<?php
+
+include './classes/databaseconnection.php';
+include './classes/databasehelper.php';
+
+$database = new DatabaseConnection();
+$helper = new DatabaseHelper($database);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -165,12 +176,21 @@
           <img src="./icons/outline_chevron_right_black_24dp.png" alt="#" />
         </button>
       </div>
-    </div>
-
+</div>
     <!-- Modal -->
+    <?php
+        
+        $images = $helper->getAll('modal');
+        $lastImage = end($images);
+        $lastImageURL = str_replace('..','.',$lastImage['photo']);
+        
+       
+       
+       
+        ?>
     <div id="index-modal" class="modal-content" style="display: block">
       <span class="close-modal" style="color: white">&times;</span>
-      <img src="./img/see2078.png" alt="#" />
+      <img src="<?php  echo $lastImageURL; ?>" alt="#" />
     </div>
 
     <!-- Home Page Description -->

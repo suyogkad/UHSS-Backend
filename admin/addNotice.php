@@ -151,6 +151,9 @@ if (isset($_POST['submit'])) {
           <li class="nav-item">
             <a class="nav-link" href="notices.php">Notice</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="modal.php">Image</a>
+          </li>
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">

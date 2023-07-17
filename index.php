@@ -314,19 +314,19 @@ $helper = new DatabaseHelper($database);
 
     <div class="index-review">
       <div class="teachers">
-        <h1>25</h1>
+        <h1>25+</h1>
         <h2>Teachers</h2>
       </div>
       <div class="students">
-        <h1>800</h1>
+        <h1>800+</h1>
         <h2>Students</h2>
       </div>
       <div class="courses">
-        <h1>18</h1>
+        <h1>18+</h1>
         <h2>Courses</h2>
       </div>
       <div class="experience">
-        <h1>29</h1>
+        <h1>29+</h1>
         <h2>Years of Experience</h2>
       </div>
     </div>

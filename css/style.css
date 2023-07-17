@@ -472,6 +472,7 @@ nav ul li ul li a {
 
 .index-review {
   display: none;
+  background-attachment: fixed;
 }
 
 /* End of Homepage Description */
@@ -1239,6 +1240,7 @@ footer .copyright {
     background-position: center;
     background-size: cover;
     background-blend-mode: darken;
+    background-attachment: fixed !important;
   }
 
   .index-review h1,

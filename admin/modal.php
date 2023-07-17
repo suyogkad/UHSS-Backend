@@ -2,30 +2,48 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
 include '../classes/databaseconnection.php';
 include '../classes/databasehelper.php';
 
 $database = new DatabaseConnection();
 $helper = new DatabaseHelper($database);
 
+$modals = $helper->getAll('modal');
+
 if (isset($_POST['submit'])) {
+  if (isset($_FILES['image'])) {
+      $file_name = $_FILES['image']['name'];
+      $file_tmp = $_FILES['image']['tmp_name'];
+      $path = "../img/modal/" . $file_name;
+      move_uploaded_file($file_tmp, $path);
+      echo "File uploaded successfully.";
 
-    if(isset($_FILES['image'])){
-        $file_name = $_FILES['image']['name'];
-        $file_tmp = $_FILES['image']['tmp_name'];
-        $path = ("../img/modal/".$file_name);
-        move_uploaded_file($file_tmp, $path);
-        echo "File uploaded successfully.";
-    }
+      $table = 'modal';
 
-    $table = 'modal';
-    $data = [
-        'photo'=>$path
-    ];
-    $helper->insertData($table,$data);
-    
+   
+      if ($existingImageRecord) {
+          // Delete the existing image file from the server
+          if (file_exists($existingImageRecord['photo'])) {
+              unlink($existingImageRecord['photo']);
+          }
+
+          // Update the database record with the new image path
+          $data = [
+              'photo' => $path
+          ];
+          $helper->updateData($table, $data, 'id', $recordId);
+      } else {
+          // Insert a new record with the image path
+          $data = [
+              'photo' => $path
+          ];
+          $helper->insertData($table, $data);
+      }
+  }
 }
+
+
+
 
 ?>
 

@@ -182,11 +182,15 @@ $helper = new DatabaseHelper($database);
         $images = $helper->getAll('modal');
         $lastImage = end($images);
         $lastImageURL = str_replace('..','.',$lastImage['photo']);
+
+        if (!empty($lastImageURL)):
         ?>
     <div id="index-modal" class="modal-content" style="display: block">
       <span class="close-modal" style="color: white">&times;</span>
       <img src="<?php  echo $lastImageURL; ?>" alt="#" />
     </div>
+
+    <?php endif; ?>
 
     <!-- Home Page Description -->
     <div class="home-description">

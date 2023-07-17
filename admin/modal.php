@@ -11,7 +11,7 @@ $helper = new DatabaseHelper($database);
 $modals = $helper->getAll('modal');
 
 if (isset($_POST['submit'])) {
-  if (isset($_FILES['image'])) {
+  if (isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
       $file_name = $_FILES['image']['name'];
       $file_tmp = $_FILES['image']['tmp_name'];
       $path = "../img/modal/" . $file_name;
@@ -20,27 +20,36 @@ if (isset($_POST['submit'])) {
 
       $table = 'modal';
 
-   
-      if ($existingImageRecord) {
-          // Delete the existing image file from the server
-          if (file_exists($existingImageRecord['photo'])) {
-              unlink($existingImageRecord['photo']);
-          }
+      $modals = $helper->getAll($table);
 
-          // Update the database record with the new image path
+      if (!empty($modals)) {
+          $firstModal = $modals[0]; // Assuming the first row is at index 0
+          
+          // Check if the first row has an existing image
+          if (!empty($firstModal['photo'])) {
+              // Delete the existing image file from the server
+              if (file_exists($firstModal['photo'])) {
+                  unlink($firstModal['photo']);
+              }
+          }
+          
+          // Update the first row with the new image path
           $data = [
               'photo' => $path
           ];
-          $helper->updateData($table, $data, 'id', $recordId);
+          $helper->updateData($table, $data, 'id', $firstModal['id']); // Replace 'id' with the appropriate primary key column name
       } else {
-          // Insert a new record with the image path
+          // Insert a new record with the image path when no rows exist in the table
           $data = [
               'photo' => $path
           ];
           $helper->insertData($table, $data);
       }
+  } else {
+      echo "Please select a file to upload.";
   }
 }
+
 
 
 

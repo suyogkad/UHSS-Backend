@@ -181,7 +181,9 @@ $helper = new DatabaseHelper($database);
     <?php
         $images = $helper->getAll('modal');
         $lastImage = end($images);
-        $lastImageURL = str_replace('..','.',$lastImage['photo']);
+        if (isset($lastImage['photo'])) {
+          $lastImageURL = str_replace('..','.',$lastImage['photo']);
+        }
 
         if (!empty($lastImageURL)):
         ?>

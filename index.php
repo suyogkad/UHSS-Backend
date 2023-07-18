@@ -5,8 +5,6 @@ include './classes/databasehelper.php';
 
 $database = new DatabaseConnection();
 $helper = new DatabaseHelper($database);
-
-
 ?>
 
 <!DOCTYPE html>
@@ -19,10 +17,12 @@ $helper = new DatabaseHelper($database);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
     <link rel="icon" href="./img/school-logo-2.png" />
     <link rel="stylesheet" href="./css/style.css" />
     <link
@@ -107,7 +107,7 @@ $helper = new DatabaseHelper($database);
           </div>
           <ul class="nav-list">
             <!-- Setting the links to #! will ensure that no action takes place on click. -->
-            <li><a href="./index.html">Home</a></li>
+            <li><a href="./index.php">Home</a></li>
             <li>
               <a href="#!">Academics</a>
               <ul class="nav-dropdown">
@@ -143,40 +143,32 @@ $helper = new DatabaseHelper($database);
       </div>
     </section>
 
-    <!-- slider container -->
-    <div class="slider-container">
-      <!-- image slides -->
-      <div class="slider-slides">
-        <div class="slide">
-          <img src="./img/viber_image_2022-04-17_21-07-36-586.jpg" alt="#" />
-        </div>
-        <div class="slide">
-          <img src="./img/viber_image_2022-04-17_22-51-11-909.jpg" alt="#" />
-        </div>
-        <div class="slide">
-          <img src="./img/viber_image_2022-04-17_22-51-25-482.jpg" alt="#" />
-        </div>
-        <div class="slide">
-          <img src="./photos/Academics/DSC_0104.JPG" alt="#" />
-        </div>
-
-        <div class="slide">
-          <img
-            src="./photos/Academics/84095488_3056810631017702_713368611594436608_n.jpg"
-            alt="#"
-          />
-        </div>
-      </div>
-      <!-- slider buttons -->
-      <div class="slider-buttons">
-        <button class="prevBtnSlider">
-          <img src="./icons/outline_chevron_left_black_24dp.png" alt="#" />
-        </button>
-        <button class="nextBtnSlider">
-          <img src="./icons/outline_chevron_right_black_24dp.png" alt="#" />
-        </button>
-      </div>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-interval="3000" style="background-image: url('./img/viber_image_2022-04-17_21-07-36-586.jpg')"></div>
+    <div class="carousel-item" data-interval="3000" style="background-image: url('./img/viber_image_2022-04-17_22-51-11-909.jpg')"></div>
+    <div class="carousel-item" data-interval="3000" style="background-image: url('./img/viber_image_2022-04-17_22-51-25-482.jpg')"></div>
+    <div class="carousel-item" data-interval="3000" style="background-image: url('./photos/Academics/DSC_0104.JPG')"></div>
+    <div class="carousel-item" data-interval="3000" style="background-image: url('./photos/Academics/84095488_3056810631017702_713368611594436608_n.jpg')"></div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
+
+
     <!-- Modal -->
     <?php
         $images = $helper->getAll('modal');

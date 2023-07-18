@@ -337,6 +337,14 @@ nav ul li ul li a {
 }
 
 /* Start of image carousel CSS */
+
+.carousel-item {
+  height: 500px;
+  background-size: cover;
+  background-position: center center;
+}
+
+/* 
 .slider-container {
   width: 100%;
   margin: 0 auto;
@@ -393,7 +401,7 @@ nav ul li ul li a {
   margin: auto;
   height: 30px;
   width: 30px;
-}
+} */
 /* End of image carousel CSS */
 
 /* HOMEPAGE */

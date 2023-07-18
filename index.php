@@ -118,7 +118,7 @@ $helper = new DatabaseHelper($database);
             </li>
             <li><a href="./common/facilities.html">Features</a></li>
 
-            <li><a href="./common/notice.html">Notice</a></li>
+            <li><a href="./common/notice.php">Notice</a></li>
             <li><a href="./common/news.html">News & Events</a></li>
             <li><a href="./common/about-us.html">About Us</a></li>
             <li>
@@ -143,13 +143,13 @@ $helper = new DatabaseHelper($database);
       </div>
     </section>
 
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="imageSlider" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+    <li data-target="#imageSlider" data-slide-to="0" class="active"></li>
+    <li data-target="#imageSlider" data-slide-to="1"></li>
+    <li data-target="#imageSlider" data-slide-to="2"></li>
+    <li data-target="#imageSlider" data-slide-to="3"></li>  
+    <li data-target="#imageSlider" data-slide-to="4"></li>
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active" data-interval="3000" style="background-image: url('./img/viber_image_2022-04-17_21-07-36-586.jpg')"></div>
@@ -158,11 +158,11 @@ $helper = new DatabaseHelper($database);
     <div class="carousel-item" data-interval="3000" style="background-image: url('./photos/Academics/DSC_0104.JPG')"></div>
     <div class="carousel-item" data-interval="3000" style="background-image: url('./photos/Academics/84095488_3056810631017702_713368611594436608_n.jpg')"></div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+  <a class="carousel-control-prev" href="#imageSlider" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+  <a class="carousel-control-next" href="#imageSlider" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>

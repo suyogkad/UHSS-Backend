@@ -106,7 +106,7 @@ $helper = new DatabaseHelper($database);
           </div>
           <ul class="nav-list">
             <!-- Setting the links to #! will ensure that no action takes place on click. -->
-            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.php">Home</a></li>
             <li>
               <a href="#!">Academics</a>
               <ul class="nav-dropdown">
@@ -116,7 +116,7 @@ $helper = new DatabaseHelper($database);
               </ul>
             </li>
             <li><a href="./facilities.html">Features</a></li>
-            <li><a href="./notice.html">Notice</a></li>
+            <li><a href="./notice.php">Notice</a></li>
             <li><a href="./news.html">News & Events</a></li>
             <li><a href="./about-us.html">About Us</a></li>
             <li>

@@ -59,7 +59,7 @@ if (isset($_POST['submit'])) {
                 $error = "Account is locked due to too many failed login attempts. Please try again in 60 seconds.";
             } else {
                 $remainingAttempts = 10 - $_SESSION['failed_attempts'];
-                $error = "Invalid username or password. Attempts remaining: " . $remainingAttempts;
+                $error = "Invalid username or password<br>Attempts remaining: " . $remainingAttempts;
             }
         }
     }

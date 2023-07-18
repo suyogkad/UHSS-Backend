@@ -19,16 +19,51 @@ if (isset($_POST['submit'])) {
 
     $result = $helper->getData($table, $condition);
 
-    if ($result && password_verify($password, $result['password'])) {
-        // Verification successful
-        $_SESSION['username'] = $username;
-        $_SESSION['isLoggedIn'] = true;
-        header("Location: index.php");
-        exit();
-    } else {
-        // Verification failed
-        $error = "Invalid username or password.";
+    if (!isset($_SESSION['failed_attempts'])) {
+        $_SESSION['failed_attempts'] = 0;
     }
+    
+    $current_time = time();
+    
+    if (isset($_SESSION['lock_time'])) {
+        $time_diff = $current_time - $_SESSION['lock_time'];
+        if ($time_diff > 60) {
+            // More than 60 seconds have passed since the account was locked.
+            // Unlock the account and reset the failed attempts counter.
+            $_SESSION['failed_attempts'] = 0;
+            unset($_SESSION['lock_time']);
+        }
+    }
+    
+    if (isset($_SESSION['lock_time'])) {
+        // The account is still locked
+        $error = "Account is locked due to too many failed login attempts. Please try again later or contact support.";
+    } else {
+        if ($result && password_verify($password, $result['password'])) {
+            // Verification successful
+            $_SESSION['username'] = $username;
+            $_SESSION['isLoggedIn'] = true;
+    
+            // Reset failed attempts on successful login
+            $_SESSION['failed_attempts'] = 0;
+    
+            header("Location: index.php");
+            exit();
+        } else {
+            // Verification failed
+            $_SESSION['failed_attempts']++;
+    
+            if ($_SESSION['failed_attempts'] >= 10) {
+                // Lock the account and store the current timestamp
+                $_SESSION['lock_time'] = $current_time;
+                $error = "Account is locked due to too many failed login attempts. Please try again in 60 seconds.";
+            } else {
+                $remainingAttempts = 10 - $_SESSION['failed_attempts'];
+                $error = "Invalid username or password. Attempts remaining: " . $remainingAttempts;
+            }
+        }
+    }
+    
 }
 
 

@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 include '../classes/databaseconnection.php';
 include '../classes/databasehelper.php';
@@ -187,7 +184,10 @@ $helper = new DatabaseHelper($database);
       <div class="notice-item">
      
           <p>Published Date: <?php echo $notice['publishDate']; ?></p>
-          <h4> <?php echo $notice['content']; ?> </h4>
+          <h4> <?php    
+        $content = $news['content'];
+        $contentWithLineBreaks = nl2br($content);
+        echo $contentWithLineBreaks;?> </h4>
           <?php if (!empty($notice['link'])) : ?>
             <a href="<?php echo $notice['link']; ?>" target="_blank"><?php echo $notice['button']; ?></a>
         <?php endif; ?>

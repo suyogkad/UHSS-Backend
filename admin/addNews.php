@@ -22,13 +22,15 @@ if (isset($_POST['submit'])) {
     $data = [
         'title'=>$title,
         'content'=>$content,
+        'publishDate'=>date('Y-m-d'),
         
        ];
 
     $helper->insertData($table,$data);
 
-     // Show success message
-    //  $successMessage = 'News posted successfully!';
+   
+    // Show success message
+    echo '<script>alert("Data added successfully!");</script>';
 
      // Redirect to news.php after a short delay
      header("refresh:0.1; url=news.php");
@@ -135,6 +137,9 @@ if (isset($_POST['submit'])) {
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="index.php">Home</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="news.php">News</a>
           </li>

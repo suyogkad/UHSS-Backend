@@ -1,3 +1,12 @@
+<?php
+
+include '../classes/databaseconnection.php';
+include '../classes/databasehelper.php';
+
+$database = new DatabaseConnection();
+$helper = new DatabaseHelper($database);
+$allNews = $helper->getAll('news');
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -132,18 +141,19 @@
 
     <div>
       <h1 class="school-name">News & Events</h1>
+      <?php foreach($allNews as $news): ?>
       <div class="notice-item">
-        <p><b>UNIVERSAL announcing ADMISSION for Nursery to IX: </b></p>
+        <p><b><?php echo $news['title']; ?>: </b></p>
+        <p><em><?php echo $news['publishDate']; ?></em></p>
         <p>
-          Universal, with the proud history of 29 years and 24 SLC passed out
-          batches, is for an excellent academic shrine. It believes in holistic
-          approach, eclecticism, and kinesthetic learning coupled with the
-          in-depth sense of ESTERN SPIRIT and WESTERN MIND. We believe in
-          software growth rather in hardware glamour. It has truly been
-          <b>"Learners' Destination and Toppers' Choice!"</b> <p>Be Proud to be
-          Universalians from Nursery to Grade 12.</p>
+        <?php 
+        $content = $news['content'];
+        $contentWithLineBreaks = nl2br($content);
+        echo $contentWithLineBreaks;
+        ?></p>
         </p>
       </div>
+      <?php endforeach;?>
     </div>
     <footer>
       <div class="container">

@@ -132,6 +132,9 @@ $helper = new DatabaseHelper($database);
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="index.php">Home</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="news.php">News</a>
           </li>
@@ -165,6 +168,7 @@ $helper = new DatabaseHelper($database);
         <div class="news-item">
           <div class="news-title"><?php echo $news['title']; ?></div>
           <p><?php echo $news['content']; ?></p>
+          <p><em> Publish Date: <?php echo $news['publishDate'] ?></em></p>
           <div class="actions">
             <a href="edit_news.php?id=<?php echo $news['id']; ?>" class="btn btn-primary">Edit</a>
             <a href="delete_news.php?id=<?php echo $news['id']; ?>" class="btn btn-danger delete-news" data-title="<?php echo $news['title']; ?>">Delete</a>

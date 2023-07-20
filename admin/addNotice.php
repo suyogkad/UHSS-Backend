@@ -145,6 +145,9 @@ if (isset($_POST['submit'])) {
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="index.php">Home</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="news.php">News</a>
           </li>
@@ -173,7 +176,7 @@ if (isset($_POST['submit'])) {
       <form method="POST" action="" id="addNoticeForm">
         <input type="text" id="title" name="title" placeholder="Notice Title" required>
         <textarea id="content" name="content" placeholder="Notice Content" required></textarea>
-        <div class="pb-3">Add Buttons?:
+        <div id="hideYes" class="pb-3">Add Buttons?:
           <button class="btn btn-success" id="yesBtn">Yes</button>
           <button class="btn btn-danger" id="noBtn">No</button>
 
@@ -194,17 +197,20 @@ if (isset($_POST['submit'])) {
   <script>
     let yesBtn =document.getElementById("yesBtn");
     let noBtn =document.getElementById("noBtn");
+    let hideYes =document.getElementById("hideYes");
     let afterClick = document.getElementById("afterClick");
 
     yesBtn.addEventListener('click',function (){
       event.preventDefault(); 
       afterClick.classList.remove('hidden');
+      hideYes.classList.add('hidden');
       
     })
 
     noBtn.addEventListener('click',function(){
       event.preventDefault(); 
       afterClick.classList.add('hidden');
+      hideYes.classList.add('hidden');
     })
   </script>
   </body>

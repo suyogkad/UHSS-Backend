@@ -1,10 +1,17 @@
 <?php
 session_start();
+ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_reporting(E_ALL);
 
 if (!isset($_SESSION['username']) || !isset($_SESSION['isLoggedIn']) || !$_SESSION['isLoggedIn']) {
     header("Location: admin.php");
     exit();
 }
+
+include '../classes/databaseconnection.php';
+include '../classes/databasehelper.php';
+
+$database = new DatabaseConnection();
+$helper = new DatabaseHelper($database);
 ?>
 
 <!doctype html>
@@ -65,6 +72,9 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['isLoggedIn']) || !$_SESSI
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="index.php">Home</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="news.php">News</a>
           </li>
@@ -86,6 +96,49 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['isLoggedIn']) || !$_SESSI
       </div>
     </div>
   </nav>
+
+  <section class="recent">
+    <div class="container-fluid p-5">
+      <div class="row">
+        <div class="col-6">
+        <div class="recent-news">
+        <h1 class="text-center">
+              Recent Notices
+            </h1>
+         <ul class="list-unstyled">
+          <?php
+          $allNews = $helper->getAll('news');
+
+          foreach ($allNews as $news) {
+            echo '<li>'.$news['title'].'</li>';
+          }
+
+          ?>
+
+         </ul>
+
+        </div>
+        </div>
+        <div class="col-6">
+          <div class="recent-notice">
+            <h1 class="text-center">
+              Recent Notices
+            </h1>
+          <ul class="list-unstyled">
+            <?php
+               $notices = $helper->getAll('notice');
+
+               foreach ($notices as $notice) {
+                 echo '<li>'.$notice['title'].'</li>';
+               }
+            ?>
+          </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   </body>
 </html>

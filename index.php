@@ -34,6 +34,16 @@ $helper = new DatabaseHelper($database);
       src="https://kit.fontawesome.com/a076d05399.js"
       crossorigin="anonymous"
     ></script>
+
+    <style>
+      hr{
+  margin-top:0 !important;
+  margin-bottom:0 !important;}
+
+a{
+  text-decoration: none !important;
+}
+    </style>
     <script src="./js/main.js"></script>
     <script src="./js/see-more.js"></script>
     <script src="./js/index-modal.js"></script>

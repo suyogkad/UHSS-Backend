@@ -107,7 +107,7 @@ $helper = new DatabaseHelper($database);
             </h1>
          <ul class="list-unstyled">
           <?php
-          $allNews = $helper->getAll('news');
+          $allNews = $helper->getAll('notice');
 
           foreach ($allNews as $news) {
             echo '<li>'.$news['title'].'</li>';
@@ -122,11 +122,11 @@ $helper = new DatabaseHelper($database);
         <div class="col-6">
           <div class="recent-notice">
             <h1 class="text-center">
-              Recent Notices
+              Recent News
             </h1>
           <ul class="list-unstyled">
             <?php
-               $notices = $helper->getAll('notice');
+               $notices = $helper->getAll('news');
 
                foreach ($notices as $notice) {
                  echo '<li>'.$notice['title'].'</li>';

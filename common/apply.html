@@ -162,12 +162,51 @@
       <h1 class="school-name">Bank details for payment</h1>
       <p>NCC Bank</p>
       <p>Sukedhara Branch</p>
-      <p>Account No: 0850000016601</p>
+      <p>
+          Account No: 
+          <span id="accountNumberHidden">XXXXXXXXXX</span>
+          <span id="accountNumberShown" class="hide">0850000016601</span> 
+          <button id="toggleButton" class="eye-button"><i class="fas fa-eye"></i></button>
+      </p>
       <p>Account Name: Universal English School Pvt. Ltd.</p>
       <br />
-      <b
-        >Pay instantly through your mobile banking by scanning QR Code below:</b
-      >
+      <b>Pay instantly through your mobile banking by scanning QR Code below:</b>
+      
+
+<style>
+.hide {
+    display: none;
+}
+
+.eye-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: inherit;
+}
+
+
+</style>
+
+<script>
+var toggleButton = document.getElementById('toggleButton');
+var accountNumberHidden = document.getElementById('accountNumberHidden');
+var accountNumberShown = document.getElementById('accountNumberShown');
+
+toggleButton.addEventListener('click', function() {
+    if (accountNumberShown.classList.contains('hide')) {
+        accountNumberShown.classList.remove('hide');
+        accountNumberHidden.classList.add('hide');
+        toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
+    } else {
+        accountNumberShown.classList.add('hide');
+        accountNumberHidden.classList.remove('hide');
+        toggleButton.innerHTML = '<i class="fas fa-eye"></i>';
+    }
+});
+
+
+</script>
 
       <!-- QR code pop up -->
       <a id="opener" class="apply-button1 ap-sp" href="#">View QR</a>

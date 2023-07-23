@@ -139,8 +139,8 @@ $allNews = $helper->getLatest('news',10);
 
     <!-- About Us -->
 
+    <h1 class="school-name">Latest News & Events</h1>
     <div>
-      <h1 class="school-name">Latest News & Events</h1>
       <?php foreach($allNews as $news): ?>
         <div class="notice-item">
         <p>Published Date: <?php echo $news['publishDate']; ?></p>

@@ -124,6 +124,11 @@ if (isset($_POST['submit'])) {
       .submit-btn{
         width: 40%;
       }
+      .page-title{
+        color: #044FA2;
+  font-size: 28px;
+  text-align: center;
+      }
 
     </style>
   </head>
@@ -160,10 +165,12 @@ if (isset($_POST['submit'])) {
       </div>
     </div>
   </nav>
-  
+  <br><br>
+  <h1 class="page-title">Edit News</h1>
   <div class="container mt-4">
     <div class="news-edit-container">
-      <h2>Edit News : <?php echo $existingnews['title']; ?></h2>
+      <h2>News Header: <?php echo $existingnews['title']; ?></h2>
+      <br>
       <form method="POST" action="" id="editNewsForm">
         <input type="text" id="title" name="title" placeholder="News Title" value="<?php echo $existingnews['title']; ?>">
         <textarea id="content" name="content" placeholder="News Content"><?php echo $existingnews['content']; ?></textarea>

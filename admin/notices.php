@@ -63,6 +63,12 @@ $helper = new DatabaseHelper($database);
         margin-right: auto !important;
       }
 
+      .page-title{
+        color: #044FA2;
+  font-size: 28px;
+  text-align: center;
+      }
+      
       .container {
         width: 70%;
         margin: auto;
@@ -163,6 +169,8 @@ $helper = new DatabaseHelper($database);
       </div>
     </div>
     </nav>
+    <br><br>
+  <h1 class="page-title">Latest Notice</h1>
     <div class="container mt-4">
       <div class="d-flex justify-content-end mb-3">
         <a href="addNotice.php" class="btn btn-success"><i class="fa-solid fa-plus"></i> Add Notice</a>

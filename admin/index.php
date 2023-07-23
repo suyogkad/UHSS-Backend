@@ -12,6 +12,17 @@ include '../classes/databasehelper.php';
 
 $database = new DatabaseConnection();
 $helper = new DatabaseHelper($database);
+
+$hour = date('H');
+$greeting = '';
+
+if ($hour >= 5 && $hour < 12) {
+    $greeting = 'Good Morning';
+} else if ($hour >= 12 && $hour < 18) {
+    $greeting = 'Good Afternoon';
+} else {
+    $greeting = 'Good Evening';
+}
 ?>
 
 <!doctype html>
@@ -24,9 +35,13 @@ $helper = new DatabaseHelper($database);
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
-      body {
+      body, html {
         font-family: 'Poppins', sans-serif;
         background-color: #FFFFFF;
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
       }
 
       .navbar {
@@ -38,11 +53,9 @@ $helper = new DatabaseHelper($database);
         color: #000000;
         transition: background-color 0.3s ease, color 0.3s ease;
         padding: 15px;
-        /* border-radius: 5px; */
       }
 
       .navbar-nav .nav-link:hover {
-        /* background-color: rgba(240, 110, 34, 0.2);*/ /*background hover color */
         color: #044FA2;
       }
 
@@ -60,7 +73,88 @@ $helper = new DatabaseHelper($database);
         margin-left: auto !important;
         margin-right: auto !important;
       }
-      
+
+      .greeting {
+        text-align: center;
+        margin-top: 1em;
+      }
+
+      .section {
+        display: flex;
+        justify-content: space-between;
+        margin: 1em;
+        height: calc(100vh - 56px - 2em);
+      }
+
+      .widget, .content {
+        border-radius: 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        background: #FFF;
+      }
+
+      .widget-container {
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+      }
+
+      .widget {
+        height: calc((100vh - 100px) / 2);
+        padding: 10px;
+      }
+
+      .time {
+        height: calc((100vh - 100px) / 2);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2em;
+        padding: 10px;
+      }
+
+      .content {
+        width: 30%;
+        padding: 1em;
+        overflow-y: auto;
+        height: calc(100vh - 56px - 2em);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        border-radius: 15px;
+        background-color: #fff;
+      }
+
+      .content ul {
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 1em;
+        padding-bottom: 1em;
+      }
+
+      .content-item {
+        border-bottom: 1px solid grey;
+        padding: 1em 0;
+      }
+
+      .content-item:last-child {
+        border-bottom: none;
+      }
+
+      .view-more {
+        text-align: center;
+        background-color: #044FA2;
+        color: #fff;
+        margin: 1em 0;
+        padding: 1em;
+        display: block;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+
+      .widget > iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
     </style>
   </head>
   <body>
@@ -72,7 +166,7 @@ $helper = new DatabaseHelper($database);
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
-        <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="index.php">Home</a>
           </li>
           <li class="nav-item">
@@ -97,48 +191,50 @@ $helper = new DatabaseHelper($database);
     </div>
   </nav>
 
-  <section class="recent">
-    <div class="container-fluid p-5">
-      <div class="row">
-        <div class="col-6">
-        <div class="recent-news">
-        <h1 class="text-center">
-              Recent Notices
-            </h1>
-         <ul class="list-unstyled">
-          <?php
-          $allNews = $helper->getAll('notice');
+  <h2 class="greeting"><?php echo $greeting . ', Admin.' ?></h2>
 
-          foreach ($allNews as $news) {
-            echo '<li>'.$news['title'].'</li>';
-          }
+  <div class="section">
+      <div class="widget-container">
+        <div class="time">
+    <div id="time" style="padding: 10px; font-size: 1.5em;"></div>
+</div>
+<script>
+  function updateTime() {
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    const timeString = now.toLocaleString('en-US', options);
+    document.getElementById('time').innerHTML = timeString;
+  }
+  setInterval(updateTime, 1000);
+  updateTime();
+</script>
 
-          ?>
-
-         </ul>
-
+        <div class="widget">
+          <iframe src="https://www.hamropatro.com/widgets/calender-medium.php" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" allowtransparency="true"></iframe>
         </div>
-        </div>
-        <div class="col-6">
-          <div class="recent-notice">
-            <h1 class="text-center">
-              Recent News
-            </h1>
-          <ul class="list-unstyled">
-            <?php
-               $notices = $helper->getAll('news');
-
-               foreach ($notices as $notice) {
-                 echo '<li>'.$notice['title'].'</li>';
-               }
-            ?>
-          </ul>
-          </div>
-        </div>
-
+      </div>
+      <div class="content">
+        <h3 class="text-center">Recent Notices</h3>
+        <?php
+        $allNotices = $helper->getAll('notice');
+        foreach ($allNotices as $notice) {
+          echo '<div class="content-item">'.$notice['title'].'</div>';
+        }
+        ?>
+        <a href="notices.php" class="view-more">View More</a>
+      </div>
+      <div class="content">
+        <h3 class="text-center">Recent News</h3>
+        <?php
+        $allNews = $helper->getAll('news');
+        foreach ($allNews as $news) {
+          echo '<div class="content-item">'.$news['title'].'</div>';
+        }
+        ?>
+        <a href="news.php" class="view-more">View More</a>
       </div>
     </div>
-  </section>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+6kn/MO0/mZ6JUhffCOepdGca/7+m" crossorigin="anonymous"></script>
   </body>
 </html>

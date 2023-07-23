@@ -99,6 +99,12 @@ if (isset($_POST['submit'])) {
         margin-right: auto !important;
       }
 
+      .page-title{
+       color: #044FA2;
+       font-size: 28px;
+       text-align: center;
+      }
+
       .news-edit-container {
         width: 70%;
         margin: auto;
@@ -320,6 +326,9 @@ if (isset($_POST['submit'])) {
     </div>
   </nav>
   
+  <br><br>
+  <h1 class="page-title">Upload Image</h1>
+  <br><br>
   <div class="container mt-4">
     <div class="news-edit-container">
       <form action="" method="post" enctype="multipart/form-data">
@@ -336,7 +345,7 @@ if (isset($_POST['submit'])) {
     <?php
       $images = $helper->getAll('modal');
       if (empty($images)) {
-          echo "<h2 class='text-center'>No Current Image in the Modal!</h2>";
+          echo "<br>.<h2 class='text-center'>No Current Image in the Modal!</h2>";
       } else {
           foreach ($images as $image):
     ?>

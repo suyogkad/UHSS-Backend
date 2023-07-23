@@ -5,7 +5,7 @@ include '../classes/databasehelper.php';
 
 $database = new DatabaseConnection();
 $helper = new DatabaseHelper($database);
-$allNews = $helper->getAll('news');
+$allNews = $helper->getLatest('news',10);
 ?>
 <!DOCTYPE html>
 <html lang="en">

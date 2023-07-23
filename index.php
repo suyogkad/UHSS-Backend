@@ -249,6 +249,8 @@ include './template/header.php';
               <p>
                 Best School I have ever seen. Once upon a time I worked as a
                 Teacher in this school which was during 1998-99.
+                <br>
+                <br>
               </p>
             </div>
           </div>

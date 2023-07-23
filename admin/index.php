@@ -37,7 +37,8 @@ if ($hour >= 5 && $hour < 12) {
 
       body, html {
         font-family: 'Poppins', sans-serif;
-        background-color: #FFFFFF;
+        background: linear-gradient(120deg, #3498db, #8e44ad);
+        color: #333;
         height: 100%;
         overflow: hidden;
         margin: 0;
@@ -45,7 +46,7 @@ if ($hour >= 5 && $hour < 12) {
       }
 
       .navbar {
-        background-color: #FFFFFF;
+        background-color: rgba(255, 255, 255, 0.9);
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
       }
 
@@ -77,6 +78,8 @@ if ($hour >= 5 && $hour < 12) {
       .greeting {
         text-align: center;
         margin-top: 1em;
+        font-size: 1.5em;
+        color: #fff;
       }
 
       .section {
@@ -86,56 +89,39 @@ if ($hour >= 5 && $hour < 12) {
         height: calc(100vh - 56px - 2em);
       }
 
-      .widget, .content {
+      .widget-container {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .widget, .time {
+        height: 50vh;
         border-radius: 15px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         background: #FFF;
-      }
-
-      .widget-container {
-        display: flex;
-        flex-direction: column;
-        width: 20%;
-      }
-
-      .widget {
-        height: calc((100vh - 100px) / 2);
-        padding: 10px;
-      }
-
-      .time {
-        height: calc((100vh - 100px) / 2);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.2em;
         padding: 10px;
       }
 
       .content {
-        width: 30%;
+        width: 40%;
+        height: 100vh;
         padding: 1em;
         overflow-y: auto;
-        height: calc(100vh - 56px - 2em);
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
         border-radius: 15px;
-        background-color: #fff;
-      }
-
-      .content ul {
-        border-bottom: 1px solid #ddd;
-        margin-bottom: 1em;
-        padding-bottom: 1em;
+        background-color: rgba(255, 255, 255, 0.7);
       }
 
       .content-item {
         border-bottom: 1px solid grey;
-        padding: 1em 0;
+        padding: 2em 0;
+        transition: background-color 0.3s ease;
       }
 
-      .content-item:last-child {
-        border-bottom: none;
+      .content-item:hover {
+        background-color: rgba(0, 0, 0, 0.1);
       }
 
       .view-more {
@@ -154,7 +140,6 @@ if ($hour >= 5 && $hour < 12) {
         height: 100%;
         border: none;
       }
-
     </style>
   </head>
   <body>
@@ -190,8 +175,6 @@ if ($hour >= 5 && $hour < 12) {
       </div>
     </div>
   </nav>
-
-  <h2 class="greeting"><?php echo $greeting . ', Admin.' ?></h2>
 
   <div class="section">
       <div class="widget-container">

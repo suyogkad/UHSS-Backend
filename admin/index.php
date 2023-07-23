@@ -113,6 +113,7 @@ if ($hour >= 5 && $hour < 12) {
       .time{
         height: 41vh !important;
       }
+      
       .content {
         width: 37.5%;
         height: 86vh;

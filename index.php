@@ -210,9 +210,9 @@ include './template/header.php';
                 <i class="fas fa-star"></i>
               </div>
               <p>One of the best schools.❣️❣️💖</p>
-              <br />
-              <br />
-              <br />
+              <br>
+              <br>
+              <br>
             </div>
           </div>
 
@@ -229,8 +229,8 @@ include './template/header.php';
                 <i class="far fa-star"></i>
               </div>
               <p>Universal HSS is one of the best School in Kathmandu.</p>
-              <br />
-              <br />
+              <br>
+              <br>
             </div>
           </div>
 

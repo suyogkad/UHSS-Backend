@@ -174,14 +174,15 @@ $helper = new DatabaseHelper($database);
           >View
         </a>
       </div> -->
+    
+      <h1 class="school-name">Latest Notices</h1>
       <?php
         
         $table = 'notice';
-        $notices = $helper->getAll($table);
+        $notices = $helper->getLatest($table,10);
 
         foreach ($notices as $notice):
         ?>
-      <h1 class="school-name">Latest Notices</h1>
       <div class="notice-item">
         <p>Published Date: <?php echo $notice['publishDate']; ?></p>
         <h4><p><?php echo $notice['title'];?></p></h4>

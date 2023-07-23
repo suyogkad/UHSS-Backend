@@ -63,6 +63,16 @@ class DatabaseHelper {
 
         return $result;
     }
+    public function getLatest($table, $limit) {
+        $query = "SELECT * FROM $table ORDER BY id DESC LIMIT :limit";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        return $result;
+    }
+    
  
     
  

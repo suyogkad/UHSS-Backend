@@ -324,7 +324,7 @@ if (isset($_POST['submit'])) {
     <div class="news-edit-container">
       <form action="" method="post" enctype="multipart/form-data">
         <b class="slt-img">Select image to upload:</b>
-        <input type="file" name="image" id="image" accept=".jpg,.jpeg,.png,.gif">
+        <input type="file" name="image" id="image" accept=".jpg,.jpeg,.png,.gif, .RAW, .avif, .jfif, .pjpeg">
         <input class="img-btn" type="submit" value="Upload Image" name="submit">
         <?php echo $message; ?>
       </form>

@@ -15,38 +15,44 @@ if (isset($_POST['submit'])) {
   if (isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
       $file_name = $_FILES['image']['name'];
       $file_tmp = $_FILES['image']['tmp_name'];
-      $path = "../img/modal/" . $file_name;
-      move_uploaded_file($file_tmp, $path);
-      $message = "<p style='color:green; margin-top:5px;'>File uploaded successfully.</p>";
+      $file_ext = strtolower(end(explode('.', $file_name)));
+      $allowed_extensions = array('jpeg', 'jpg', 'png', 'gif');
 
-      $table = 'modal';
+      if (in_array($file_ext, $allowed_extensions)) {
+          $path = "../img/modal/" . $file_name;
+          move_uploaded_file($file_tmp, $path);
+          $message = "<p style='color:green; margin-top:5px;'>File uploaded successfully.</p>";
 
-      $modals = $helper->getAll($table);
+          $table = 'modal';
 
-      if (!empty($modals)) {
-          $firstModal = $modals[0];
+          $modals = $helper->getAll($table);
 
-          if (!empty($firstModal['photo'])) {
-              if (file_exists($firstModal['photo'])) {
-                  unlink($firstModal['photo']);
+          if (!empty($modals)) {
+              $firstModal = $modals[0];
+
+              if (!empty($firstModal['photo'])) {
+                  if (file_exists($firstModal['photo'])) {
+                      unlink($firstModal['photo']);
+                  }
               }
-          }
 
-          $data = [
-              'photo' => $path
-          ];
-          $helper->updateData($table, $data, 'id', $firstModal['id']);
-      } else {
-          $data = [
-              'photo' => $path
-          ];
-          $helper->insertData($table, $data);
+              $data = [
+                  'photo' => $path
+              ];
+              $helper->updateData($table, $data, 'id', $firstModal['id']);
+          } else {
+              $data = [
+                  'photo' => $path
+              ];
+              $helper->insertData($table, $data);
+          }
       }
   } else {
       $message = "<p style='color:orange; margin-top:5px;'>Please select a file to upload.</p>";
   }
 }
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -289,6 +295,9 @@ if (isset($_POST['submit'])) {
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="index.php">Home</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="news.php">News</a>
           </li>
@@ -315,7 +324,7 @@ if (isset($_POST['submit'])) {
     <div class="news-edit-container">
       <form action="" method="post" enctype="multipart/form-data">
         <b class="slt-img">Select image to upload:</b>
-        <input type="file" name="image" id="image">
+        <input type="file" name="image" id="image" accept=".jpg,.jpeg,.png,.gif">
         <input class="img-btn" type="submit" value="Upload Image" name="submit">
         <?php echo $message; ?>
       </form>

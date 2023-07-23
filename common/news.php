@@ -112,7 +112,7 @@ $allNews = $helper->getAll('news');
             </li>
             <li><a href="./facilities.html">Features</a></li>
             <li><a href="./notice.php">Notice</a></li>
-            <li><a href="./news.html">News & Events</a></li>
+            <li><a href="./news.php">News & Events</a></li>
             <li><a href="./about-us.html">About Us</a></li>
             <li>
               <a href="#!">Resources</a>
@@ -140,11 +140,11 @@ $allNews = $helper->getAll('news');
     <!-- About Us -->
 
     <div>
-      <h1 class="school-name">News & Events</h1>
+      <h1 class="school-name">Latest News & Events</h1>
       <?php foreach($allNews as $news): ?>
-      <div class="notice-item">
+        <div class="notice-item">
+        <p>Published Date: <?php echo $news['publishDate']; ?></p>
         <p><b><?php echo $news['title']; ?>: </b></p>
-        <p><em><?php echo $news['publishDate']; ?></em></p>
         <p>
         <?php 
         $content = $news['content'];

@@ -114,7 +114,7 @@ $helper = new DatabaseHelper($database);
             </li>
             <li><a href="./facilities.html">Features</a></li>
             <li><a href="./notice.php">Notice</a></li>
-            <li><a href="./news.html">News & Events</a></li>
+            <li><a href="./news.php">News & Events</a></li>
             <li><a href="./about-us.html">About Us</a></li>
             <li>
               <a href="#!">Resources</a>
@@ -141,7 +141,7 @@ $helper = new DatabaseHelper($database);
 
     <!-- notice -->
 
-    <div>
+    <!-- <div>
       <h1 class="school-name">Recent Notice</h1>
       <div class="notice-item">
         <p>Published Date: 2022/04/22</p>
@@ -173,7 +173,7 @@ $helper = new DatabaseHelper($database);
           target="_blank"
           >View
         </a>
-      </div>
+      </div> -->
       <?php
         
         $table = 'notice';
@@ -181,13 +181,14 @@ $helper = new DatabaseHelper($database);
 
         foreach ($notices as $notice):
         ?>
+      <h1 class="school-name">Latest Notices</h1>
       <div class="notice-item">
-     
-          <p>Published Date: <?php echo $notice['publishDate']; ?></p>
-          <h4> <?php    
-        $content = $news['content'];
+        <p>Published Date: <?php echo $notice['publishDate']; ?></p>
+        <h4><p><?php echo $notice['title'];?></p></h4>
+          <?php    
+        $content = $notice['content'];
         $contentWithLineBreaks = nl2br($content);
-        echo $contentWithLineBreaks;?> </h4>
+        echo $contentWithLineBreaks;?></p>
           <?php if (!empty($notice['link'])) : ?>
             <a href="<?php echo $notice['link']; ?>" target="_blank"><?php echo $notice['button']; ?></a>
         <?php endif; ?>

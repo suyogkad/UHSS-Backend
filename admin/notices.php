@@ -174,6 +174,7 @@ $helper = new DatabaseHelper($database);
         <div class="news-item">
           <div class="news-title"><?php echo $notice['title']; ?></div>
           <p><?php echo $notice['content']; ?></p>
+          <p><em>Published Date: <?php echo $notice['publishDate'];?></em></p>
           <div class="actions">
             <a href="edit_notice.php?id=<?php echo $notice['id']; ?>" class="btn btn-primary">Edit</a>
             <a href="delete_notice.php?id=<?php echo $notice['id']; ?>" class="btn btn-danger delete-notice" data-title="<?php echo $notice['title']; ?>">Delete</a>

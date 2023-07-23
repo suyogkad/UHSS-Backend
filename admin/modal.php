@@ -15,37 +15,32 @@ if (isset($_POST['submit'])) {
   if (isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
       $file_name = $_FILES['image']['name'];
       $file_tmp = $_FILES['image']['tmp_name'];
-      $file_ext = strtolower(end(explode('.', $file_name)));
-      $allowed_extensions = array('jpeg', 'jpg', 'png', 'gif');
+      $path = "../img/modal/" . $file_name;
+      move_uploaded_file($file_tmp, $path);
+      $message = "<p style='color:green; margin-top:5px;'>File uploaded successfully.</p>";
 
-      if (in_array($file_ext, $allowed_extensions)) {
-          $path = "../img/modal/" . $file_name;
-          move_uploaded_file($file_tmp, $path);
-          $message = "<p style='color:green; margin-top:5px;'>File uploaded successfully.</p>";
+      $table = 'modal';
 
-          $table = 'modal';
+      $modals = $helper->getAll($table);
 
-          $modals = $helper->getAll($table);
+      if (!empty($modals)) {
+          $firstModal = $modals[0];
 
-          if (!empty($modals)) {
-              $firstModal = $modals[0];
-
-              if (!empty($firstModal['photo'])) {
-                  if (file_exists($firstModal['photo'])) {
-                      unlink($firstModal['photo']);
-                  }
+          if (!empty($firstModal['photo'])) {
+              if (file_exists($firstModal['photo'])) {
+                  unlink($firstModal['photo']);
               }
-
-              $data = [
-                  'photo' => $path
-              ];
-              $helper->updateData($table, $data, 'id', $firstModal['id']);
-          } else {
-              $data = [
-                  'photo' => $path
-              ];
-              $helper->insertData($table, $data);
           }
+
+          $data = [
+              'photo' => $path
+          ];
+          $helper->updateData($table, $data, 'id', $firstModal['id']);
+      } else {
+          $data = [
+              'photo' => $path
+          ];
+          $helper->insertData($table, $data);
       }
   } else {
       $message = "<p style='color:orange; margin-top:5px;'>Please select a file to upload.</p>";

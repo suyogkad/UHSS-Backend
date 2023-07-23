@@ -38,6 +38,7 @@ if ($hour >= 5 && $hour < 12) {
       body, html {
         font-family: 'Poppins', sans-serif;
         background: linear-gradient(120deg, #3498db, #8e44ad);
+        /* background: linear-gradient(120deg, #f06e22, #54ab40, #044FA2); */
         color: #333;
         height: 100%;
         overflow: hidden;
@@ -46,7 +47,7 @@ if ($hour >= 5 && $hour < 12) {
       }
 
       .navbar {
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: #ffffff;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
       }
 
@@ -90,23 +91,31 @@ if ($hour >= 5 && $hour < 12) {
       }
 
       .widget-container {
-        width: 30%;
+        width: 21%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
       }
 
       .widget, .time {
-        height: 50vh;
+        height: 40vh;
         border-radius: 15px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         background: #FFF;
         padding: 10px;
+        margin-bottom: 15px !important;
       }
 
+      .widget{
+        align-items: center !important;
+      }
+
+      .time{
+        height: 41vh !important;
+      }
       .content {
-        width: 40%;
-        height: 100vh;
+        width: 37.5%;
+        height: 86vh;
         padding: 1em;
         overflow-y: auto;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);

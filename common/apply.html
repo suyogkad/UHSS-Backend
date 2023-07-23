@@ -163,7 +163,7 @@
       <p>NCC Bank</p>
       <p>Sukedhara Branch</p>
       <p>
-          Account No: 
+          Account No:
           <span id="accountNumberHidden">XXXXXXXXXX</span>
           <span id="accountNumberShown" class="hide">0850000016601</span> 
           <button id="toggleButton" class="eye-button"><i class="fas fa-eye"></i></button>
@@ -172,7 +172,7 @@
       <br />
       <b>Pay instantly through your mobile banking by scanning QR Code below:</b>
       
-
+<!-- css code for hide/show eye button -->
 <style>
 .hide {
     display: none;
@@ -184,10 +184,9 @@
     cursor: pointer;
     outline: inherit;
 }
-
-
 </style>
 
+<!-- script to toggle hide/show eye button -->
 <script>
 var toggleButton = document.getElementById('toggleButton');
 var accountNumberHidden = document.getElementById('accountNumberHidden');

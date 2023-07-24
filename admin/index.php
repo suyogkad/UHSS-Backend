@@ -20,6 +20,7 @@ $helper = new DatabaseHelper($database);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Dashboard</title>
+    <script src="https://kit.fontawesome.com/e30eb907c6.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
@@ -27,6 +28,8 @@ $helper = new DatabaseHelper($database);
       body, html {
         font-family: 'Poppins', sans-serif;
         background: linear-gradient(120deg, #3498db, #8e44ad);
+        /* background-color: #044FA2; */
+        /* background: linear-gradient(30deg, #044FA2, #f06e22); */
         color: #333;
         height: 100%;
         overflow: hidden;
@@ -105,6 +108,7 @@ $helper = new DatabaseHelper($database);
         margin-bottom: 15px !important;
         background: none !important;
         font-size: 24px !important;
+        margin-top: 50px;
       }
 
       .widget{
@@ -249,18 +253,22 @@ $helper = new DatabaseHelper($database);
   <div class="section">
       <div class="widget-container">
         <div class="time">
-    <div id="time" style="padding: 10px; font-size: 1.5em;"></div>
-</div>
-<script>
-  function updateTime() {
+          <!-- <i class="fa-solid fa-clock" style="color: #ffffff;"></i> -->
+          <div id="time" style="padding: 10px; font-size: 1.5em;"></div>
+        </div>
+        <script>
+          function updateTime() {
     const now = new Date();
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-    const timeString = now.toLocaleString('en-US', options);
-    document.getElementById('time').innerHTML = timeString;
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+    const dateString = now.toLocaleDateString('en-US', dateOptions);
+    const timeString = now.toLocaleTimeString('en-US', timeOptions);
+    document.getElementById('time').innerHTML = timeString + '<br>' + dateString;
   }
   setInterval(updateTime, 1000);
   updateTime();
 </script>
+
         <div class="widget">
           <iframe id="calender" src="https://www.hamropatro.com/widgets/calender-medium.php" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" allowtransparency="true"></iframe>
         </div>

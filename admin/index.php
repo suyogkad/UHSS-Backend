@@ -12,17 +12,6 @@ include '../classes/databasehelper.php';
 
 $database = new DatabaseConnection();
 $helper = new DatabaseHelper($database);
-
-$hour = date('H');
-$greeting = '';
-
-if ($hour >= 5 && $hour < 12) {
-    $greeting = 'Good Morning';
-} else if ($hour >= 12 && $hour < 18) {
-    $greeting = 'Good Afternoon';
-} else {
-    $greeting = 'Good Evening';
-}
 ?>
 
 <!doctype html>
@@ -38,7 +27,6 @@ if ($hour >= 5 && $hour < 12) {
       body, html {
         font-family: 'Poppins', sans-serif;
         background: linear-gradient(120deg, #3498db, #8e44ad);
-        /* background: linear-gradient(120deg, #f06e22, #54ab40, #044FA2); */
         color: #333;
         height: 100%;
         overflow: hidden;
@@ -97,7 +85,7 @@ if ($hour >= 5 && $hour < 12) {
         justify-content: space-between;
       }
 
-      .widget, .time {
+      .widget{
         height: 40vh;
         border-radius: 15px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -106,15 +94,31 @@ if ($hour >= 5 && $hour < 12) {
         margin-bottom: 15px !important;
       }
 
+      .time {
+        font-family: 'Poppins';
+        font-weight: bold;
+        height: 40vh;
+        color: #ffffff;
+        border-radius: 15px;
+        background: #FFF;
+        padding: 10px;
+        margin-bottom: 15px !important;
+        background: none !important;
+        font-size: 24px !important;
+      }
+
       .widget{
         align-items: center !important;
       }
 
-      .time{
-        height: 41vh !important;
+      .text-center{
+        margin-top: 10px;
       }
       
       .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         width: 37.5%;
         height: 86vh;
         padding: 1em;
@@ -125,31 +129,87 @@ if ($hour >= 5 && $hour < 12) {
       }
 
       .content-item {
-        border-bottom: 1px solid grey;
+        border-bottom: 1px solid #000000;
         padding: 2em 0;
         transition: background-color 0.3s ease;
       }
 
       .content-item:hover {
-        background-color: rgba(0, 0, 0, 0.1);
+        /* background-color: rgba(0, 0, 0, 0.1); */
+        color: #044FA2;
+        font-weight: bolder;
       }
 
       .view-more {
-        text-align: center;
-        background-color: #044FA2;
-        color: #fff;
-        margin: 1em 0;
-        padding: 1em;
-        display: block;
-        text-decoration: none;
-        border-radius: 5px;
-      }
+  text-align: center;
+  background-color: #044FA2;
+  color: #fff;
+  padding: 1em;
+  display: block;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: auto; /* This will push the button to the bottom */
+}
+
+.view-more:hover{
+  background-color: #044FA2;
+  opacity: 70%;
+  color: #ffffff;
+}
 
       .widget > iframe {
         width: 100%;
         height: 100%;
         border: none;
       }
+
+      .content-item:hover{
+        cursor: pointer;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .widget-container {
+          display: none;
+        }
+
+        .content {
+          width: 90%;
+          margin: auto;
+          margin-bottom: 10px;
+        }
+
+        .section {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      @media (min-width: 768px) and (max-width: 1024px) {
+  .section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .widget-container {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  .widget, .time {
+    width: 45%;
+    height: 25vh;
+    margin-bottom: 1em;
+  }
+
+  .content {
+    width: 90%;
+    height: 60vh;
+    margin-bottom: 10px;
+  }
+}
+
     </style>
   </head>
   <body>
@@ -201,9 +261,8 @@ if ($hour >= 5 && $hour < 12) {
   setInterval(updateTime, 1000);
   updateTime();
 </script>
-
         <div class="widget">
-          <iframe src="https://www.hamropatro.com/widgets/calender-medium.php" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" allowtransparency="true"></iframe>
+          <iframe id="calender" src="https://www.hamropatro.com/widgets/calender-medium.php" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" allowtransparency="true"></iframe>
         </div>
       </div>
       <div class="content">

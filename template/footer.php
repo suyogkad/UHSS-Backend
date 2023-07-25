@@ -1,17 +1,16 @@
-<footer>
       <div class="container">
         <div class="row">
           <div class="footer-col">
             <h4>Quick Links</h4>
             <ul>
-              <li><a href="./common/about-us.html">About Us</a></li>
-              <li><a href="./common/facilities.html">Features</a></li>
+              <li><a href="./common/about-us.php">About Us</a></li>
+              <li><a href="./common/facilities.php">Features</a></li>
               <li>
                 <a href="https://goo.gl/maps/dyzZMA7fmcnWTopd6" target="_blank"
                   >Location</a
                 >
               </li>
-              <li><a href="./common/apply.html">Admission</a></li>
+              <li><a href="./common/apply..php">Admission</a></li>
             </ul>
           </div>
 
@@ -74,6 +73,3 @@
         </script>
         universal higher secondary school. all rights reserved.
       </p>
-    </footer>
-    </body>
-</html>

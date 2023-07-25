@@ -96,56 +96,48 @@ if (isset($_POST['submit'])) {
 <html>
 <head>
 <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
-        body, html {
-            font-family: 'Poppins', sans-serif;
-            height: 100%;
-            margin: 0;
-            overflow: hidden;
-        }
+body, html {
+    font-family: 'Poppins', sans-serif;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
 
-        .container {
-            display: flex;
-            height: 100%;
-        }
+.container {
+    display: flex;
+    height: 100%;
+}
 
-        .left {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50%;
-            margin-right: 6%;
-            margin-left: 1%;
-            
-        }
+.left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin-right: 6%;
+    margin-left: 1%;   
+}
 
-        .logo {
-            max-width: 90%;
-        }
+.logo {
+    max-width: 90%;
+}
 
-        .vertical-line {
-            border-left: 1px solid lightgray;
-            height: 80%;
-            margin: auto;
-        }
+.vertical-line {
+    border-left: 1px solid lightgray;
+    height: 80%;
+    margin: auto;
+}
 
-        .line{
-            width: 100%;
-            margin-left: 15%;
-
-        }
-
-        .right {
-            width: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            padding: 20px;
-            position: relative;
-        }
-
+.right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
         .color-line {
             margin-left: 26.7%;
             height: 5px;
@@ -244,6 +236,95 @@ if (isset($_POST['submit'])) {
     .help-link:hover {
         text-decoration: underline;
     }
+
+   /* For smaller mobiles */
+@media (max-width: 320px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .left, .right {
+    width: 100%;
+    margin: 0;
+  }
+
+  .left {
+    order: 1; /* logo comes first */
+  }
+
+  .logo {
+    max-width: 60%; /* make the logo smaller */
+    margin-bottom: 20px; /* add some margin at the bottom */
+  }
+
+  .vertical-line {
+    display: none; /* hide the vertical line */
+  }
+
+  .right {
+    order: 2; /* login part comes second */
+    align-items: center; /* center align items in right column */
+  }
+
+  .color-line {
+    margin-left: 0; /* line starts from the beginning of the text */
+  }
+
+  .help-link {
+    position: static;
+    transform: none;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
+/* For large mobiles */
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .left, .right {
+    width: 100%;
+    margin: 0;
+  }
+
+  .left {
+    order: 1; /* logo comes first */
+  }
+
+  .logo {
+    max-width: 60%; /* make the logo smaller */
+    margin-bottom: 20px; /* add some margin at the bottom */
+  }
+
+  .vertical-line {
+    display: none; /* hide the vertical line */
+  }
+
+  .right {
+    order: 2; /* login part comes second */
+    align-items: center; /* center align items in right column */
+  }
+
+  .color-line {
+    margin-left: 0; /* line starts from the beginning of the text */
+  }
+
+  .help-link {
+    position: static;
+    transform: none;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+</style>
 
         
     </style>

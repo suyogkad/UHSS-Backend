@@ -5,7 +5,8 @@ include '../classes/databasehelper.php';
 
 $database = new DatabaseConnection();
 $helper = new DatabaseHelper($database);
-$allNews = $helper->getLatest('news',10);
+
+$news = $helper->getAll('news');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +33,7 @@ $allNews = $helper->getLatest('news',10);
       src="https://kit.fontawesome.com/a076d05399.js"
       crossorigin="anonymous"
     ></script>
+    <script src="../js/modal-qr.js"></script>
     <title>Universal Higher Secondary School</title>
   </head>
   <body>
@@ -138,24 +140,93 @@ $allNews = $helper->getLatest('news',10);
       </div>
     </section>
 
-    <!-- About Us -->
+    <div class="apply">
+      <h1 class="school-name">Admission</h1>
+      <p>
+        Admission of new students will be made every year on the basis of
+        written and oral tests (i.e. entrance cum level test). It will be on the
+        major subjects such as English, Nepali, Mathematics and Science. The
+        entrance test is conducted as an essential pre-condition for the
+        enrolment. The selection of students entirely rests upon the
+        principal&#39;s discretion. Student&#39;s disciplines and manners are
+        also counted. Moreover, even the admitted student can be rusticated at
+        any time if he/she fails to keep up with the rules and regulations of
+        the school.
+      </p>
+      <p>
+        <b>You can apply admission online by clicking the link below: </b>
+        <a
+          class="apply-button ap-sp"
+          href="https://forms.gle/w2NVia9CNJt4Zmda8"
+          target="_blank"
+          >Apply Online</a
+        >
+      </p>
+      <br />
+      <h1 class="school-name">Admission Criteria</h1>
+      <ul>
+        <li>Mark Sheet</li>
+        <li>Transfer cum Character Certificate</li>
+        <li>Entrance, Attitude & Aptitude Test</li>
+        <li>Interview</li>
+      </ul>
+      <h1 class="school-name">Bank details for payment</h1>
+      <p>NCC Bank</p>
+      <p>Sukedhara Branch</p>
+      <p>
+          Account No:
+          <span id="accountNumberHidden">XXXXXXXXXX</span>
+          <span id="accountNumberShown" class="hide">0850000016601</span> 
+          <button id="toggleButton" class="eye-button"><i class="fas fa-eye"></i></button>
+      </p>
+      <p>Account Name: Universal English School Pvt. Ltd.</p>
+      <br />
+      <b>Pay instantly through your mobile banking by scanning QR Code below:</b>
+      
+<!-- css code for hide/show eye button -->
+<style>
+.hide {
+    display: none;
+}
 
-    <h1 class="school-name">Latest News & Events</h1>
-    <div>
-      <?php foreach($allNews as $news): ?>
-        <div class="notice-item">
-        <p>Published Date: <?php echo $news['publishDate']; ?></p>
-        <p><b><?php echo $news['title']; ?>: </b></p>
-        <p>
-        <?php 
-        $content = $news['content'];
-        $contentWithLineBreaks = nl2br($content);
-        echo $contentWithLineBreaks;
-        ?></p>
-        </p>
+.eye-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: inherit;
+}
+</style>
+
+<!-- script to toggle hide/show eye button -->
+<script>
+var toggleButton = document.getElementById('toggleButton');
+var accountNumberHidden = document.getElementById('accountNumberHidden');
+var accountNumberShown = document.getElementById('accountNumberShown');
+
+toggleButton.addEventListener('click', function() {
+    if (accountNumberShown.classList.contains('hide')) {
+        accountNumberShown.classList.remove('hide');
+        accountNumberHidden.classList.add('hide');
+        toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
+    } else {
+        accountNumberShown.classList.add('hide');
+        accountNumberHidden.classList.remove('hide');
+        toggleButton.innerHTML = '<i class="fas fa-eye"></i>';
+    }
+});
+
+
+</script>
+
+      <!-- QR code pop up -->
+      <a id="opener" class="apply-button1 ap-sp" href="#">View QR</a>
+
+      <div class="modal-content">
+        <img src="../img/qr.jpg" alt="#" />
       </div>
-      <?php endforeach;?>
+      <!-- QR code pop up ends -->
     </div>
+
     <footer>
     <?php
     include '../template/footer.php';

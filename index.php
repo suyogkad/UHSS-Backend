@@ -97,19 +97,19 @@ include './template/header.php';
     </div>
 
     <div class="ach-mis-vis">
-      <a href="./common/about-us.html" style="text-decoration: none">
+      <a href="./common/about-us.php" style="text-decoration: none">
         <div class="vis">
           <i class="fa-solid fa-eye"></i>
           <span>Vision</span>
         </div>
       </a>
 
-      <a href="./common/about-us.html" style="text-decoration: none">
+      <a href="./common/about-us.php" style="text-decoration: none">
         <div class="mis">
           <i class="fa-solid fa-bullseye"></i><span>Mission</span>
         </div>
       </a>
-      <a href="./common/about-us.html" style="text-decoration: none">
+      <a href="./common/about-us.php" style="text-decoration: none">
         <div class="ach">
           <i class="fa-solid fa-trophy"></i><span>Achievements</span>
         </div>
@@ -261,7 +261,6 @@ include './template/header.php';
     <!-- end of google reviews section -->
 
     <?php
-    
     include './template/footer.php';
     ?>
  

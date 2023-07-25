@@ -1,3 +1,13 @@
+<?php
+
+include '../classes/databaseconnection.php';
+include '../classes/databasehelper.php';
+
+$database = new DatabaseConnection();
+$helper = new DatabaseHelper($database);
+
+$news = $helper->getAll('news');
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,8 +39,9 @@
     <img id="top-img-head" src="../img/2.jpg" alt="#" />
     <!-- Marquee -->
     <marquee direction="left"
-      >Latest Notice:&#160; &#160;Admission Open from PG to Grade IX for 2079
-      Academic session.
+      >Latest News:&#160; &#160;<?php foreach ($news as $new) {
+        echo $new['title'].',';
+      } ?>
     </marquee>
     <!-- Go-to top button -->
     <div class="arrow-btn">
@@ -96,23 +107,23 @@
             <li>
               <a href="#!">Academics</a>
               <ul class="nav-dropdown">
-                <li><a href="./academics1.html">School</a></li>
-                <li><a href="./academics2.html">U2 (+2)</a></li>
-                <li><a href="./academics3.html">College</a></li>
+                <li><a href="./academics1.php">School</a></li>
+                <li><a href="./academics2.php">U2 (+2)</a></li>
+                <li><a href="./academics3.php">College</a></li>
               </ul>
             </li>
-            <li><a href="./facilities.html">Features</a></li>
+            <li><a href="./facilities.php">Features</a></li>
             <li><a href="./notice.php">Notice</a></li>
             <li><a href="./news.php">News & Events</a></li>
-            <li><a href="./about-us.html">About Us</a></li>
+            <li><a href="./about-us.php">About Us</a></li>
             <li>
               <a href="#!">Resources</a>
               <ul class="nav-dropdown">
                 <li><a href="#!">Alumni</a></li>
-                <li><a href="./gallery.html">Gallery</a></li>
+                <li><a href="./gallery.php">Gallery</a></li>
                 <li><a href="#!">Downloads</a></li>
-                <li><a href="./videoppt.html">Video/PPT</a></li>
-                <li><a href="./apply.html">How To Apply</a></li>
+                <li><a href="./videoppt.php">Video/PPT</a></li>
+                <li><a href="./apply.php">How To Apply</a></li>
               </ul>
             </li>
 
@@ -132,41 +143,41 @@
       <h1 class="school-name">Gallery</h1>
       <hr class="heading-hr" />
       <div class="gallery-images main-g-images">
-        <a href="./sub-gallery/academics.html"
+        <a href="./sub-gallery/academics.php"
           ><img
             src="../photos/Academics/277559979_5380694391962636_3450371764402116599_n.jpg"
             alt="#"
           /><span>Academics</span></a
         >
-        <a href="./sub-gallery/games.html"
+        <a href="./sub-gallery/games.php"
           ><img
             src="../photos/Sports/264440_601621489869974_1961133369_n.jpg"
             alt="#"
           /><span>Games and Sports</span></a
         >
-        <a href="./sub-gallery/extra.html">
+        <a href="./sub-gallery/extra.php">
           <img src="../photos/ec.JPG" alt="#" /><span>Extracurricular</span>
         </a>
-        <a href="./sub-gallery/festivals.html">
+        <a href="./sub-gallery/festivals.php">
           <img
             src="../photos/festivals/80788761_2974139742618125_3517077104409706496_n.jpg"
             alt="#"
           /><span>Festivals</span>
         </a>
-        <a href="./sub-gallery/awards.html">
+        <a href="./sub-gallery/awards.php">
           <img src="../photos/Awards/IMG_0861.JPG" alt="#" /><span>Awards</span>
         </a>
-        <a href="./sub-gallery/arts.html">
+        <a href="./sub-gallery/arts.php">
           <img src="../photos/Academics/IMG-3116.JPG" alt="#" /><span
             >Arts & Crafts</span
           >
         </a>
-        <a href="./sub-gallery/tours.html">
+        <a href="./sub-gallery/tours.php">
           <img src="/img/photo_2022-04-07_14-19-56.jpg" alt="#" /><span
             >Training, Workshop, Excursion & Tours</span
           >
         </a>
-        <a href="./sub-gallery/misc.html">
+        <a href="./sub-gallery/misc.php">
           <img
             src="../photos/Collection/IMG_20220326_200102_381.jpg"
             alt="#"
@@ -176,80 +187,9 @@
     </div>
 
     <footer>
-      <div class="container">
-        <div class="row">
-          <div class="footer-col">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><a href="./about-us.html">About Us</a></li>
-              <li><a href="./facilities.html">Features</a></li>
-              <li>
-                <a href="https://goo.gl/maps/dyzZMA7fmcnWTopd6" target="_blank"
-                  >Location</a
-                >
-              </li>
-              <li><a href="./apply.html">Admission</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4>Contact</h4>
-            <ul>
-              <p>
-                <li>
-                  <p>&#9742; 01-4437545</p>
-                </li>
-              </p>
-              <li>
-                <p>
-                  <i class="fa fa-phone" style="font-size: 14px"></i>
-                  +977-9851072589
-                </p>
-              </li>
-              <li><p>&#9993; infouniversal2022@gmail.com</p></li>
-              <li><p>&#9993; support@universalenglishschool.edu.np</p></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4>Address</h4>
-            <ul>
-              <li><p>Dhumbarahi-4</p></li>
-              <li><p>Kathmandu, Nepal</p></li>
-              <li><p>P.O.B. No. 10372</p></li>
-              <li><p>Voice Mail 1618014437545</p></li>
-            </ul>
-          </div>
-
-          <div class="footer-col">
-            <h4>Follow Us</h4>
-            <div class="social-links">
-              <a href="https://www.facebook.com/u2universal" target="_blank"
-                ><i class="fab fa-facebook-f"></i
-              ></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=infouniversal2022@gmail.com"
-                target="_blank"
-                ><i class="fa fa-envelope"></i
-              ></a>
-              <a
-                href="https://www.instagram.com/myuniversalenglishschool/"
-                target="_blank"
-                ><i class="fab fa-instagram"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <p class="copyright">
-        &#169;
-        <script>
-          document.write(new Date().getFullYear());
-        </script>
-        universal higher secondary school. all rights reserved.
-      </p>
+    <?php
+    include '../template/footer.php';
+    ?>
     </footer>
   </body>
 </html>

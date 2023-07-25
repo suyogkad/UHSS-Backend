@@ -126,24 +126,24 @@ $news = $helper->getAll('news');
             <li>
               <a href="#!">Academics</a>
               <ul class="nav-dropdown">
-                <li><a href="../common/academics1.html">School</a></li>
-                <li><a href="../common/academics2.html">U2 (+2)</a></li>
-                <li><a href="../common/academics3.html">College</a></li>
+                <li><a href="../common/academics1.php">School</a></li>
+                <li><a href="../common/academics2.php">U2 (+2)</a></li>
+                <li><a href="../common/academics3.php">College</a></li>
               </ul>
             </li>
-            <li><a href="./common/facilities.html">Features</a></li>
+            <li><a href="./common/facilities.php">Features</a></li>
 
             <li><a href="./common/notice.php">Notice</a></li>
-            <li><a href="./common/news.html">News & Events</a></li>
-            <li><a href="./common/about-us.html">About Us</a></li>
+            <li><a href="./common/news.php">News & Events</a></li>
+            <li><a href="./common/about-us.php">About Us</a></li>
             <li>
               <a href="#!">Resources</a>
               <ul class="nav-dropdown">
                 <li><a href="#!">Alumni</a></li>
-                <li><a href="./common/gallery.html">Gallery</a></li>
+                <li><a href="./common/gallery.php">Gallery</a></li>
                 <li><a href="#!">Downloads</a></li>
-                <li><a href="./common/videoppt.html">Video/PPT</a></li>
-                <li><a href="./common/apply.html">How To Apply</a></li>
+                <li><a href="./common/videoppt.php">Video/PPT</a></li>
+                <li><a href="./common/apply.php">How To Apply</a></li>
               </ul>
             </li>
             <li>

@@ -198,7 +198,8 @@ $helper = new DatabaseHelper($database);
        
       </div>
       <?php endforeach; ?>
-    </div>
+
+ 
 
     <footer>
     <?php
